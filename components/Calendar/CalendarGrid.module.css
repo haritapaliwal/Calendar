@@ -1,0 +1,59 @@
+.gridWrapper {
+  padding: 12px 16px 16px;
+  flex: 1;
+}
+
+/* Slide-in animation on month change */
+@keyframes enterForward {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes enterBackward {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.enterForward {
+  animation: enterForward 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.enterBackward {
+  animation: enterBackward 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Day-of-week header row */
+.dayHeaders {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 6px;
+}
+
+.dayHeader {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  padding: 4px 0;
+}
+
+.satHeader {
+  color: var(--month-primary, #1565c0);
+}
+
+.sunHeader {
+  color: #e63946;
+}
+
+/* Day grid */
+.daysGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.emptyCell {
+  min-height: 42px;
+}

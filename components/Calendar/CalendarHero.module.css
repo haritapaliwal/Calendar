@@ -1,0 +1,83 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  border-radius: 4px 4px 0 0;
+  flex-shrink: 0;
+}
+
+.heroImage {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.6s ease;
+}
+
+/* Diagonal chevron - matching reference image */
+.chevronOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 110px;
+  clip-path: polygon(0 40%, 50% 0%, 100% 40%, 100% 100%, 0 100%);
+  opacity: 0.92;
+}
+
+/* Spiral binding at top */
+.spiralBinding {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: #2d2d2d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  z-index: 10;
+}
+
+.spiralCoil {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid #888;
+  background: #555;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  flex-shrink: 0;
+}
+
+/* Month name label on top of chevron */
+.monthLabel {
+  position: absolute;
+  bottom: 18px;
+  right: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 5;
+}
+
+.yearText {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.15em;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.monthText {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}

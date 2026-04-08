@@ -1,0 +1,258 @@
+/* ═══════════════════════════════════════════════
+   CalendarApp.module.css
+   Root layout, themes, card, background decorations
+   ═══════════════════════════════════════════════ */
+
+.root {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.5s ease;
+}
+
+/* ─── Theme Definitions ───────────────────────── */
+
+.themeLight {
+  background: #f0f4f8;
+  --header-bg: #ffffff;
+  --notes-bg: #fafafa;
+  --input-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --text-muted: #a0aec0;
+  --hover-bg: #edf2f7;
+  --card-bg: #ffffff;
+  --card-shadow: 0 24px 64px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.themeDark {
+  background: #0f172a;
+  --header-bg: #1e293b;
+  --notes-bg: #1a2438;
+  --input-bg: #243044;
+  --border-color: #334155;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --hover-bg: #2d3f56;
+  --card-bg: #1e293b;
+  --card-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.themeOcean {
+  background: linear-gradient(135deg, #0c4a6e 0%, #075985 50%, #0369a1 100%);
+  --header-bg: #e0f2fe;
+  --notes-bg: #f0f9ff;
+  --input-bg: #ffffff;
+  --border-color: #bae6fd;
+  --text-primary: #0c4a6e;
+  --text-secondary: #0369a1;
+  --text-muted: #7dd3fc;
+  --hover-bg: #dbeafe;
+  --card-bg: #ffffff;
+  --card-shadow: 0 24px 64px rgba(3,105,161,0.35), 0 8px 24px rgba(3,105,161,0.2);
+}
+
+.themeWarm {
+  background: linear-gradient(135deg, #7c2d12 0%, #9a3412 50%, #c2410c 100%);
+  --header-bg: #fff7ed;
+  --notes-bg: #fffbf5;
+  --input-bg: #ffffff;
+  --border-color: #fed7aa;
+  --text-primary: #7c2d12;
+  --text-secondary: #9a3412;
+  --text-muted: #fdba74;
+  --hover-bg: #ffedd5;
+  --card-bg: #ffffff;
+  --card-shadow: 0 24px 64px rgba(124,45,18,0.35), 0 8px 24px rgba(124,45,18,0.2);
+}
+
+/* ─── Calendar Card ──────────────────────────── */
+
+.calendarCard {
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  width: 100%;
+  max-width: 920px;
+  position: relative;
+  z-index: 2;
+  transition: box-shadow 0.4s ease;
+}
+
+.calendarCard:hover {
+  box-shadow: 0 32px 80px rgba(0,0,0,0.18), 0 12px 32px rgba(0,0,0,0.12);
+}
+
+/* ─── Desktop Layout: side-by-side ────────────── */
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  min-height: 600px;
+}
+
+.calendarColumn {
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  min-width: 0;
+}
+
+.notesColumn {
+  display: flex;
+  flex-direction: column;
+  background: var(--notes-bg);
+  min-height: 100%;
+}
+
+/* ─── Status Bar ─────────────────────────────── */
+
+.statusBar {
+  padding: 8px 18px 14px;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--border-color);
+}
+
+.statusMsg {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.hintMsg {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.rangeStatus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  flex-wrap: wrap;
+}
+
+.clearBtn {
+  border: none;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--clear-color, #1565c0);
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 12px;
+  border: 1.5px solid var(--clear-color, #1565c0);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.clearBtn:hover {
+  background: var(--clear-color, #1565c0);
+  color: #ffffff;
+}
+
+/* ─── Background Decorations ─────────────────── */
+
+.bgDecor1,
+.bgDecor2 {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(60px);
+  transition: background 0.5s ease;
+}
+
+.bgDecor1 {
+  width: 600px;
+  height: 600px;
+  top: -200px;
+  right: -100px;
+}
+
+.bgDecor2 {
+  width: 400px;
+  height: 400px;
+  bottom: -100px;
+  left: -80px;
+}
+
+/* ─── Responsive: Tablet ────────────────────── */
+
+@media (max-width: 768px) {
+  .root {
+    padding: 20px 12px;
+    align-items: flex-start;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .notesColumn {
+    border-left: none;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .calendarCard {
+    max-width: 100%;
+  }
+}
+
+/* ─── Responsive: Mobile ─────────────────────── */
+
+@media (max-width: 480px) {
+  .root {
+    padding: 8px;
+  }
+
+  .calendarCard {
+    border-radius: 12px;
+  }
+}
+
+/* ─── Print styles ────────────────────────────── */
+
+@media print {
+  .root {
+    background: white;
+    padding: 0;
+  }
+
+  .bgDecor1,
+  .bgDecor2 {
+    display: none;
+  }
+
+  .calendarCard {
+    box-shadow: none;
+    max-width: 100%;
+  }
+
+  .notesColumn {
+    display: none;
+  }
+}
