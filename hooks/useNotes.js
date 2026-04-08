@@ -34,7 +34,8 @@ export function useNotes(year, month) {
 
   const getRangeNote = (startDate, endDate) => {
     if (!startDate || !endDate) return "";
-    const key = `range_${startDate.toISOString().split("T")[0]}_${endDate.toISOString().split("T")[0]}`;
+    const [s, e] = startDate <= endDate ? [startDate, endDate] : [endDate, startDate];
+    const key = `range_${s.toISOString().split("T")[0]}_${e.toISOString().split("T")[0]}`;
     return getNote(key);
   };
 

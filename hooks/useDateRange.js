@@ -23,7 +23,13 @@ export function useDateRange() {
         setEndDate(null);
         setSelecting(false);
       } else {
-        setEndDate(clicked);
+        // Ensure startDate is always the smaller date
+        if (clicked < startDate) {
+          setEndDate(startDate);
+          setStartDate(clicked);
+        } else {
+          setEndDate(clicked);
+        }
         setSelecting(false);
       }
     }
